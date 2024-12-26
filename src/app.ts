@@ -5,6 +5,7 @@ import { seedProducts } from './app/config/seed';
 import { orderRoutes } from './app/modules/order/order.routes';
 import { productRoutes } from './app/modules/product/product.routes';
 import cors from "cors";
+import { paymentRoutes } from './app/modules/payment/payment.routes';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 
 app.use('/api/v1/product', productRoutes);
 app.use('/api/v1/order', orderRoutes);
+app.use('/api/v1/payment', paymentRoutes);
 
 app.get("/", (req: Request, res: Response) => {
     res.send({
@@ -25,6 +27,6 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 connectDB();
-//seedProducts();
+seedProducts();
 
 export default app;
